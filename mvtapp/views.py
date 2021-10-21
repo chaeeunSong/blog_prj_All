@@ -6,5 +6,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def detail(request):
-        return HttpResponse('response detail')
-
+        #return HttpResponse('response detail')
+        return render(request, 'mvtapp/mvt_test.html')
