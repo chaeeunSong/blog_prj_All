@@ -1,0 +1,19 @@
+*{font-family: 'Noto Sans KR', sans-serif;}
+
+.header{
+    /*height: 10rem;
+    background: red;
+    border-radius:1rem;*/
+
+    text-align : center;
+    height: 10rem;
+    margin: 1rem;
+}
+
+.footer{
+    text-align: center;
+    height: 5rem;
+    margin: 1rem;
+
+    font-size: 0.8rem;
+}

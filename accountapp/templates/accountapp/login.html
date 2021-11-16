@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div style="text-align:center; width:20rem; margin: 2rem auto;">
+        <h3> Login View </h3>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {% bootstrap_form form %}
+                <input type="submit" class="btn btn-primary mt-3">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

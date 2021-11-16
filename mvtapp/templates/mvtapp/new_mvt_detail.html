@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div style="text-align : center">
+      <h2>Input Data</h2>
+
+      <form action="/mvtapps/detail/" method="post">
+          {% csrf_token %}
+          <div>
+              <input type="text" name="title" placeholder="과목명을 넣어주세요">
+          </div>
+
+          <div style="margin: 1rem">
+              <input type="text" name="count" placeholder="수강인원을 넣어주세요">
+          </div>
+
+          <div style="margin: 1rem">
+              <input type="submit" class="btn btn-primary">
+          </div>
+      </form>
+
+      <hr>
+      <div style="overflow:scroll; height: 30rem; text-align:center;">
+      {% if datas %}
+          {% for data in datas %}
+              <h5> Title : {{ data.title }}, Count : {{ data.count }}</h5>
+          {% endfor %}
+      {% endif %}
+      </div>
+
+  </div>
+{% endblock %}
