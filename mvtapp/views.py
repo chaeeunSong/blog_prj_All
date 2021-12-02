@@ -16,25 +16,29 @@ from django.urls import reverse
 
 def detail(request):
 
-        if request.method == 'POST':
-                title = request.POST.get('title')
-                count = request.POST.get('count')
+        if request.user.is_authenticated:
+                if request.method == 'POST':
+                        title = request.POST.get('title')
+                        count = request.POST.get('count')
 
-                # ORM을 위한, 모델 오브젝트 생성
-                data = LectureDetail()
-                data.title = title
-                data.count = int(count)
+                        # ORM을 위한, 모델 오브젝트 생성
+                        data = LectureDetail()
+                        data.title = title
+                        data.count = int(count)
 
-                data.save()
+                        data.save()
 
-                return HttpResponseRedirect(reverse('mvtapp:detail'))
-                #after input, for review datas in DB
-                #datas = LectureDetail.objects.all()
+                        return HttpResponseRedirect(reverse('mvtapp:detail'))
+                        #after input, for review datas in DB
+                        #datas = LectureDetail.objects.all()
 
-                #return render(request, 'mvtapp/new_mvt_detail.html', context={'datas':datas})
+                        #return render(request, 'mvtapp/new_mvt_detail.html', context={'datas':datas})
+                else:
+                    datas = LectureDetail.objects.all()
+
+                return render(request, 'mvtapp/new_mvt_detail.html', context={'datas':datas})
+
         else:
-            datas = LectureDetail.objects.all()
-
-        return render(request, 'mvtapp/new_mvt_detail.html', context={'datas':datas})
+            return HttpResponseRedirect(reverse('accountapp:login'))
         #return HttpResponse('response detail')
         #return render(request, 'mvtapp/new_mvt_detail.html')

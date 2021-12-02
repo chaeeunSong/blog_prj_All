@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="text-align:center; width:20rem; margin: 2rem auto;">
+        <h3> Delete Account </h3>
+
+        <div>
+            <form action="{% url 'accountapp:delete' pk=objUser.pk %}" method="post">
+                {% csrf_token %}
+
+                <div>
+                    <input type="submit" class="btn btn-primary mt-3">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

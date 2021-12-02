@@ -4,5 +4,25 @@
             <span>NAV1</span>
             <span>NAV2</span>
             <span>NAV3</span>
+
+            {%  if not user.is_authenticated %}
+                <a href="{% url 'accountapp:login' %}">
+                    <span>login</span>
+                </a>
+
+                <a href="{% url 'accountapp:create' %}">
+                    <span>Registration</span>
+                </a>
+
+            {% else %}  <!-- user가 로그인 상태 -->
+
+                <a href="{% url 'accountapp:detail' pk=user.pk %}">
+                    <span>userinfo</span>
+                </a>
+
+                <a href="{% url 'accountapp:logout' %}">
+                    <span>logout</span>
+                </a>
+            {% endif %}
         </div>
 </div>

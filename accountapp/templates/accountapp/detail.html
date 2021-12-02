@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="text-align:center;">
+        <h4> User Info(Detail) </h4>
+
+        <div>
+            <p> username : {{ objUser.username }}</p>
+            <p> date_joined : {{ objUser.date_joined }} </p>
+        </div>
+
+        {% if objUser == user %}
+            <div>
+                <a href="{% url 'accountapp:update' pk=user.pk %}">Edit Account</a>
+            </div>
+
+            <div>
+                <a href="{% url 'accountapp:delete' pk=user.pk %}">Delete Account</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
